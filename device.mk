@@ -95,12 +95,6 @@ PRODUCT_PACKAGES := \
     com.android.future.usb.accessory \
     whisperd
 
-# for bugmailer
-PRODUCT_PACKAGES += send_bug
-PRODUCT_COPY_FILES += \
-    system/extras/bugmailer/bugmailer.sh:system/bin/bugmailer.sh \
-    system/extras/bugmailer/send_bug:system/bin/send_bug
-
 # NFC packages
 PRODUCT_PACKAGES += \
     nfc.grouper \
@@ -144,11 +138,8 @@ PRODUCT_COPY_FILES += \
     frameworks/native/data/etc/android.hardware.nfc.xml:system/etc/permissions/android.hardware.nfc.xml
 
 # NFCEE access control
-ifeq ($(TARGET_BUILD_VARIANT),user)
-    NFCEE_ACCESS_PATH := device/asus/grouper/nfcee_access.xml
-else
-    NFCEE_ACCESS_PATH := device/asus/grouper/nfcee_access_debug.xml
-endif
+NFCEE_ACCESS_PATH := device/asus/grouper/nfcee_access.xml
+
 PRODUCT_COPY_FILES += \
     $(NFCEE_ACCESS_PATH):system/etc/nfcee_access.xml
 
